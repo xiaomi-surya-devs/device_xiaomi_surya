@@ -28,8 +28,8 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 # Add common definitions for Qualcomm
 $(call inherit-product, hardware/qcom-caf/common/common.mk)
 
-# Inherit from dolby
-$(call inherit-product-if-exists, vendor/oneplus/dolby/oplusdolby.mk)
+# Inherit from Dolby
+$(call inherit-product-if-exists, vendor/sony/dolby/sonydolby.mk)
 
 # Inherit Xiaomi Camera
 $(call inherit-product-if-exists, vendor/xiaomi/camera/device.mk)
@@ -53,7 +53,6 @@ PRODUCT_PACKAGES += \
 
 # Audio
 TARGET_EXCLUDES_AUDIOFX := true
-TARGET_USES_CUSTOM_DOLBY_XML := true
 
 PRODUCT_PACKAGES += \
     android.hardware.audio@7.0-impl \
@@ -91,8 +90,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio/audio_policy_volumes.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes.xml \
     $(LOCAL_PATH)/configs/audio/audio_tuning_mixer_tavil.txt:$(TARGET_COPY_OUT_VENDOR)/etc/audio_tuning_mixer_tavil.txt \
     $(LOCAL_PATH)/configs/audio/mixer_paths_wcd9375.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_wcd9375.xml \
-    $(LOCAL_PATH)/configs/audio/sound_trigger_mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sound_trigger_mixer_paths.xml \
-    $(LOCAL_PATH)/configs/dolby/multimedia_dolby_dax_default.xml:$(TARGET_COPY_OUT_ODM)/etc/dolby/multimedia_dolby_dax_default.xml
+    $(LOCAL_PATH)/configs/audio/sound_trigger_mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sound_trigger_mixer_paths.xml
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio/sound_trigger_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sound_trigger_platform_info.xml

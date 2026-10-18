@@ -53,7 +53,7 @@
 -->
 
 <Included>
-    <Include href="media_codecs_c2_dolby_audio.xml" />
+    <Include href="media_codecs_dolby_audio.xml" />
     <Decoders>
         <!-- C2 decoders -->
         <MediaCodec name="c2.qti.avc.decoder" type="video/avc">
@@ -266,3 +266,4 @@
         </MediaCodec>
     </Encoders>
 </Included>
+
