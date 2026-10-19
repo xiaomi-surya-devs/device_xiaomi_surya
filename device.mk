@@ -37,9 +37,6 @@ $(call inherit-product-if-exists, vendor/xiaomi/camera/device.mk)
 # Inherit surya firmware images
 $(call inherit-product, firmware/xiaomi/surya/Android.mk)
 
-# Inherit Gapps
-$(call inherit-product-if-exists, vendor/gapps/arm64/arm64-vendor.mk)
-
 # Sign keys
 -include vendor/private/keys/keys.mk
 
