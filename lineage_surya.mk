@@ -16,6 +16,7 @@ $(call inherit-product, device/xiaomi/surya/device.mk)
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
 # Lineage build flags
+LINEAGE_MAINTAINER := kylieeXD
 TARGET_SCREEN_WIDTH := 1080
 
 # Device manufacturer
