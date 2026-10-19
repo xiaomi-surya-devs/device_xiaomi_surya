@@ -54,6 +54,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     fs_config_files
 
+# ADB
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.adb.secure=0 \
+    persist.sys.usb.config=adb
+
 # Audio
 TARGET_EXCLUDES_AUDIOFX := true
 
