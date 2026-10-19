@@ -5,4 +5,5 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/shinkai_surya.mk
+    $(LOCAL_DIR)/shinkai_surya.mk \
+    $(LOCAL_DIR)/lineage_surya.mk
