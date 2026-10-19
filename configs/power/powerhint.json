@@ -154,11 +154,11 @@
     },
     {
       "Name": "DoubleTapToWakeEnable",
-      "Path": "/sys/devices/virtual/touch/touch_dev/double_tap",
+      "Path": "/sys/touchpanel/double_tap",
       "Values": [
         "1",
         "0"
-      ],
+      ]
     },
     {
       "Name": "PowerHALMainState",
