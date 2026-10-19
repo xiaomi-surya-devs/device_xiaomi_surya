@@ -65,3 +65,7 @@
 # Xiaomi thermal daemon
 /vendor/bin/mi_thermald                                              u:object_r:mi_thermald_exec:s0
 /data/vendor/thermal(/.*)?                                           u:object_r:thermal_data_file:s0
+
+# Haptic / CABC (ported from 23.1)
+/sys/devices/platform/soc/884000.i2c/i2c-3/3-005a/ulevel             u:object_r:sysfs_vibrator:s0
+/sys/devices/platform/soc/soc:qcom,dsi-display/cabc                  u:object_r:sysfs_hbm:s0

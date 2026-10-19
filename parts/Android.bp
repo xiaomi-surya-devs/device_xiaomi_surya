@@ -13,6 +13,8 @@ android_app {
     platform_apis: true,
     privileged: true,
 
+    init_rc: ["init/init.xiaomiparts.rc"],
+
     static_libs: [
         "org.lineageos.settings.resources",
     ],
