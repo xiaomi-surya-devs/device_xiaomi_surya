@@ -1,3 +1,5 @@
 -keep class org.lineageos.settings.doze.* {
   *;
 }
+-keep class com.xiaomi.settings.** { *; }
+-keepclassmembers class com.xiaomi.settings.** { *; }

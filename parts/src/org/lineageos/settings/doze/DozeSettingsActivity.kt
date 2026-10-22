@@ -14,23 +14,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package org.lineageos.settings.doze
 
-package org.lineageos.settings.doze;
+import android.os.Bundle
+import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity
 
-import android.os.Bundle;
-import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;
+class DozeSettingsActivity : CollapsingToolbarBaseActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
-public class DozeSettingsActivity extends CollapsingToolbarBaseActivity {
-    private static final String TAG_DOZE = "doze";
+        supportFragmentManager
+            .beginTransaction()
+            .replace(
+                com.android.settingslib.collapsingtoolbar.R.id.content_frame,
+                DozeSettingsFragment(), TAG_DOZE
+            )
+            .commit()
+    }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(com.android.settingslib.collapsingtoolbar.R.id.content_frame,
-                        new DozeSettingsFragment(), TAG_DOZE)
-                .commit();
+    companion object {
+        private const val TAG_DOZE = "doze"
     }
 }

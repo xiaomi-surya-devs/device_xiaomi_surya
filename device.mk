@@ -481,3 +481,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Call the proprietary setup
 $(call inherit-product, vendor/xiaomi/surya/surya-vendor.mk)
+
+# Xiaomi Parts
+PRODUCT_PACKAGES += \
+    XiaomiParts \
+    privapp_whitelist_com.xiaomi.settings.xml

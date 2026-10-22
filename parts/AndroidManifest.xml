@@ -1,58 +1,153 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2015-2016 The CyanogenMod Project
-                   2017-2023 The LineageOS Project
+     Copyright (C) 2023 Paranoid Android
 
-     Licensed under the Apache License, Version 2.0 (the "License");
-     you may not use this file except in compliance with the License.
-     You may obtain a copy of the License at
-
-          http://www.apache.org/licenses/LICENSE-2.0
-
-     Unless required by applicable law or agreed to in writing, software
-     distributed under the License is distributed on an "AS IS" BASIS,
-     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-     See the License for the specific language governing permissions and
-     limitations under the License.
+     SPDX-License-Identifier: Apache-2.0
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.lineageos.settings"
-    android:versionCode="1"
-    android:versionName="1.0"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.xiaomi.settings"
     android:sharedUserId="android.uid.system">
 
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.ACCESS_SURFACE_FLINGER" />
+    <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-
-    <protected-broadcast android:name="com.android.systemui.doze.pulse" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS" tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE" />
+    <uses-permission android:name="android.permission.MANAGE_NOTIFICATION_LISTENERS" />
+    <uses-permission android:name="android.permission.MEDIA_CONTENT_CONTROL" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
 
     <application
-        android:label="@string/device_settings_app_name"
+        android:label="@string/app_name"
         android:persistent="true"
-        android:theme="@style/Theme.SubSettingsBase.Expressive">
+        android:defaultToDeviceProtectedStorage="true"
+        android:directBootAware="true">
 
-        <receiver android:name=".BootCompletedReceiver"
-                  android:exported="false">
+        <receiver
+            android:name=".BootCompletedReceiver"
+            android:exported="true">
+            <intent-filter android:priority="1000">
+                <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <!-- ColorService disabled -->
+
+        <!-- Services -->
+        <service android:name=".battery.ChargingLimitService" />
+
+        <!-- Battery/Charging Activity -->
+        <activity
+            android:name=".battery.ChargingControlActivity"
+            android:label="@string/charging_control_title"
+            android:theme="@style/Theme.SubSettingsBase"
+            android:exported="false" />
+
+        <!-- Xiaomi Parts Hub -->
+        <activity
+            android:name=".hub.XiaomiPartsActivity"
+            android:label="@string/xiaomi_parts_title"
+            android:icon="@drawable/ic_xiaomiparts"
+            android:theme="@style/Theme.SubSettingsBase"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.android.settings.action.IA_SETTINGS" />
+            </intent-filter>
+            <meta-data
+                android:name="com.android.settings.category"
+                android:value="com.android.settings.category.ia.system" />
+            <meta-data
+                android:name="com.android.settings.icon"
+                android:resource="@drawable/ic_xiaomiparts" />
+            <meta-data
+                android:name="com.android.settings.summary"
+                android:resource="@string/xiaomi_parts_summary" />
+        </activity>
+
+        <!-- GameBar -->
+        <activity
+            android:name=".gamebar.GameBarSettingsActivity"
+            android:label="@string/game_bar_title"
+            android:theme="@style/Theme.SubSettingsBase"
+            android:exported="false" />
+
+        <activity android:name=".gamebar.GameBarAppSelectorActivity" />
+
+        <service
+            android:name=".gamebar.GameBarTileService"
+            android:label="@string/game_bar_tile_label"
+            android:icon="@drawable/ic_gamebar"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.service.quicksettings.TOGGLEABLE_TILE"
+                android:value="true" />
+        </service>
+
+        <service
+            android:name=".gamebar.GameBarMonitorService"
+            android:exported="false" />
+
+        <receiver
+            android:name=".gamebar.GameBarBootReceiver"
+            android:exported="true"
+            android:enabled="true"
+            android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </receiver>
 
-        <service android:name=".doze.DozeService"
-                 android:permission="XiaomiDozeService"
-                 android:exported="true">
+        <!-- Touch Sampling -->
+        <activity
+            android:name=".touchsampling.TouchSamplingSettingsActivity"
+            android:label="@string/htsr_title"
+            android:theme="@style/Theme.SubSettingsBase"
+            android:exported="false" />
+
+        <service
+            android:name=".touchsampling.TouchSamplingService"
+            android:permission="android.permission.BIND_JOB_SERVICE"
+            android:exported="false" />
+
+        <activity android:name=".touchsampling.TouchSamplingAppSelectorActivity" />
+
+        <service
+            android:name=".touchsampling.TouchSamplingTileService"
+            android:label="@string/touch_sampling_tile_label"
+            android:icon="@drawable/ic_touch_sampling_tile"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.service.quicksettings.TOGGLEABLE_TILE"
+                android:value="true" />
         </service>
 
+        <!-- Core Control -->
         <activity
-            android:name=".doze.DozeSettingsActivity"
-            android:exported="false"
-            android:label="@string/ambient_display_title">
-            <intent-filter>
-                <action android:name="org.lineageos.settings.device.DOZE_SETTINGS" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
+            android:name=".corecontrol.CoreControlActivity"
+            android:label="@string/core_control_title"
+            android:theme="@style/Theme.SubSettingsBase"
+            android:exported="true" />
+
+        <!-- Backlight disabled -->
 
     </application>
 </manifest>
