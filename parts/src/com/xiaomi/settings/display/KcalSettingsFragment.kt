@@ -12,9 +12,9 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.preference.Preference
 import androidx.preference.PreferenceManager
-import androidx.preference.SeekBarPreference
 import com.android.settingslib.widget.MainSwitchPreference
 import com.android.settingslib.widget.SettingsBasePreferenceFragment
+import com.android.settingslib.widget.SliderPreference
 import com.xiaomi.settings.R
 
 class KcalSettingsFragment : SettingsBasePreferenceFragment(),
@@ -23,7 +23,7 @@ class KcalSettingsFragment : SettingsBasePreferenceFragment(),
     private lateinit var prefs: SharedPreferences
     private var kcalSwitch: MainSwitchPreference? = null
     private var resetButton: Preference? = null
-    private val sliders = mutableListOf<SeekBarPreference>()
+    private val sliders = mutableListOf<SliderPreference>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -84,22 +84,17 @@ class KcalSettingsFragment : SettingsBasePreferenceFragment(),
     private fun configureSliders() {
         sliders.clear()
         listOf(
-            "red_slider" to 256,
-            "green_slider" to 256,
-            "blue_slider" to 256,
-            "saturation_slider" to 383,
-            "contrast_slider" to 383,
-            "hue_slider" to 255,
-            "brightness_slider" to 383
-        ).forEach { (key, max) ->
-            findPreference<SeekBarPreference>(key)?.apply {
-                this.max = max
-                min = when (key) {
-                    "hue_slider" -> 0
-                    "saturation_slider", "contrast_slider", "brightness_slider" -> 224
-                    else -> 1
-                }
-                setUpdatesContinuously(true)
+            "red_slider",
+            "green_slider",
+            "blue_slider",
+            "saturation_slider",
+            "contrast_slider",
+            "hue_slider",
+            "brightness_slider"
+        ).forEach { key ->
+            findPreference<SliderPreference>(key)?.apply {
+                sliderIncrement = 1
+                setTickVisible(false)
                 onPreferenceChangeListener = this@KcalSettingsFragment
                 summary = value.toString()
                 sliders.add(this)
@@ -125,13 +120,13 @@ class KcalSettingsFragment : SettingsBasePreferenceFragment(),
 
         kcalSwitch?.isChecked = false
         updateSliderStates(false)
-        findPreference<SeekBarPreference>("red_slider")?.value = 256
-        findPreference<SeekBarPreference>("green_slider")?.value = 256
-        findPreference<SeekBarPreference>("blue_slider")?.value = 256
-        findPreference<SeekBarPreference>("saturation_slider")?.value = 255
-        findPreference<SeekBarPreference>("contrast_slider")?.value = 255
-        findPreference<SeekBarPreference>("hue_slider")?.value = 0
-        findPreference<SeekBarPreference>("brightness_slider")?.value = 255
+        findPreference<SliderPreference>("red_slider")?.value = 256
+        findPreference<SliderPreference>("green_slider")?.value = 256
+        findPreference<SliderPreference>("blue_slider")?.value = 256
+        findPreference<SliderPreference>("saturation_slider")?.value = 255
+        findPreference<SliderPreference>("contrast_slider")?.value = 255
+        findPreference<SliderPreference>("hue_slider")?.value = 0
+        findPreference<SliderPreference>("brightness_slider")?.value = 255
         sliders.forEach { it.summary = it.value.toString() }
         KcalUtils.writeCurrentSettings(prefs)
     }
