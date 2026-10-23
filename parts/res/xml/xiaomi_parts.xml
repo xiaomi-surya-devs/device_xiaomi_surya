@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <PreferenceCategory
-        android:title="@string/parts_settings_category_title">
+        android:key="category_performance"
+        android:title="@string/parts_category_performance">
 
         <Preference
             android:key="parts_game_bar"
@@ -19,22 +20,22 @@
             android:icon="@drawable/ic_core_control" />
 
         <Preference
-            android:key="parts_charging_control"
-            android:title="@string/charging_control_title"
-            android:summary="@string/charging_control_summary"
-            android:icon="@drawable/ic_charging_control" />
+            android:key="parts_thermal"
+            android:title="@string/thermal_title"
+            android:summary="@string/thermal_summary"
+            android:icon="@drawable/ic_thermal_settings" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="category_display"
+        android:title="@string/parts_category_display">
 
         <Preference
-            android:key="parts_dirac"
-            android:title="@string/dirac_title"
-            android:summary="@string/dirac_summary"
-            android:icon="@drawable/ic_dirac" />
-
-        <Preference
-            android:key="parts_clear_speaker"
-            android:title="@string/clear_speaker_title"
-            android:summary="@string/clear_speaker_summary"
-            android:icon="@drawable/ic_clear_speaker" />
+            android:key="parts_refresh_rate"
+            android:title="@string/refresh_title"
+            android:summary="@string/refresh_summary"
+            android:icon="@drawable/ic_refresh_rate" />
 
         <Preference
             android:key="parts_kcal"
@@ -48,17 +49,35 @@
             android:summary="@string/lcd_features_summary"
             android:icon="@drawable/ic_hbm" />
 
-        <Preference
-            android:key="parts_refresh_rate"
-            android:title="@string/refresh_title"
-            android:summary="@string/refresh_summary"
-            android:icon="@drawable/ic_refresh_rate" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="category_audio"
+        android:title="@string/parts_category_audio">
 
         <Preference
-            android:key="parts_thermal"
-            android:title="@string/thermal_title"
-            android:summary="@string/thermal_summary"
-            android:icon="@drawable/ic_thermal_settings" />
+            android:key="parts_dirac"
+            android:title="@string/dirac_title"
+            android:summary="@string/dirac_summary"
+            android:icon="@drawable/ic_dirac" />
+
+        <Preference
+            android:key="parts_clear_speaker"
+            android:title="@string/clear_speaker_title"
+            android:summary="@string/clear_speaker_summary"
+            android:icon="@drawable/ic_clear_speaker" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="category_battery"
+        android:title="@string/parts_category_battery">
+
+        <Preference
+            android:key="parts_charging_control"
+            android:title="@string/charging_control_title"
+            android:summary="@string/charging_control_summary"
+            android:icon="@drawable/ic_charging_control" />
 
         <Preference
             android:key="parts_charge_bypass"
@@ -66,19 +85,18 @@
             android:summary="@string/charge_bypass_summary"
             android:icon="@drawable/ic_bypass_charging" />
 
-        <SwitchPreferenceCompat
-            android:key="fps_info"
-            android:defaultValue="false"
-            android:title="@string/fps_info_title"
-            android:summary="@string/fps_info_summary"
-            android:icon="@drawable/ic_fps" />
+    </PreferenceCategory>
 
-        <androidx.preference.SeekBarPreference
+    <PreferenceCategory
+        android:key="category_haptics"
+        android:title="@string/parts_category_haptics">
+
+        <com.android.settingslib.widget.SliderPreference
             android:key="haptic_level_pref"
+            android:title="@string/haptic_level_title"
             android:defaultValue="80"
             android:max="100"
-            android:title="@string/haptic_level_title"
-            app:min="1" />
+            app:min="0" />
 
     </PreferenceCategory>
 

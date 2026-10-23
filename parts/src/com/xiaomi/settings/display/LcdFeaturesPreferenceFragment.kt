@@ -6,6 +6,8 @@
 
 package com.xiaomi.settings.display
 
+import android.view.View
+import com.xiaomi.settings.utils.applyBottomInsets
 import android.os.Bundle
 import android.os.SystemProperties
 import androidx.preference.ListPreference
@@ -26,6 +28,11 @@ class LcdFeaturesPreferenceFragment : SettingsBasePreferenceFragment(),
 
     private var hbmPref: ListPreference? = null
     private var cabcPref: ListPreference? = null
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        applyBottomInsets()
+    }
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.lcd_features_settings, rootKey)

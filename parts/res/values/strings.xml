@@ -231,9 +231,6 @@
     <string name="refresh_rate_tile_title">Refresh Rate</string>
     <string name="haptic_level_title">Haptic feedback level</string>
     <string name="haptic_level_summary_incompatible">Feature not supported</string>
-    <string name="fps_info_title">FPS Counter</string>
-    <string name="fps_info_summary">Show the current display frame rate</string>
-    <string name="fps_overlay_permission_required">Overlay permission is required for the FPS counter</string>
     <string name="charging_title">Charging</string>
     <string name="charge_bypass_title">Bypass charging</string>
     <string name="charge_bypass_enable">Enable bypass charging</string>
@@ -241,4 +238,11 @@
     <string name="charge_bypass_warning">Bypass charging may increase device temperature. Use with caution.</string>
     <string name="charge_bypass_unavailable">Bypass charging is not supported on this device</string>
     <string name="charge_bypass_description">When enabled, power goes directly to the device and bypasses the battery. Useful when plugged in for long periods to reduce battery wear. Make sure your kernel supports bypass charging.</string>
+
+    <string name="parts_category_performance">Performance</string>
+    <string name="parts_category_display">Display</string>
+    <string name="parts_category_audio">Audio</string>
+    <string name="parts_category_battery">Battery &amp; Charging</string>
+    <string name="parts_category_haptics">Haptics</string>
+    <string name="haptic_level_summary">Level: %1$d%%</string>
 </resources>

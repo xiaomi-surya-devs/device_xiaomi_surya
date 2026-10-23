@@ -5,6 +5,8 @@
 
 package com.xiaomi.settings.corecontrol
 
+import android.view.View
+import com.xiaomi.settings.utils.applyBottomInsets
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -23,6 +25,11 @@ class CoreControlFragment : SettingsBasePreferenceFragment(), Preference.OnPrefe
     }
 
     private val mCorePrefs = arrayOfNulls<SwitchPreferenceCompat>(NUM_CORES)
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        applyBottomInsets()
+    }
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.core_control_settings, rootKey)

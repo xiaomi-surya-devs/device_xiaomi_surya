@@ -16,6 +16,8 @@
 
 package com.xiaomi.settings.gamebar
 
+import android.view.View
+import com.xiaomi.settings.utils.applyBottomInsets
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
 import android.os.Bundle
@@ -26,6 +28,11 @@ import com.android.settingslib.widget.SettingsBasePreferenceFragment
 import java.util.HashSet
 
 class GameBarAppSelectorFragment : SettingsBasePreferenceFragment() {
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        applyBottomInsets()
+    }
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         val screen = preferenceManager.createPreferenceScreen(requireContext())

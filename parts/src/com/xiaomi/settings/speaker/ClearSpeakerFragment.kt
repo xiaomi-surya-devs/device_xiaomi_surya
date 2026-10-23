@@ -6,6 +6,8 @@
 
 package com.xiaomi.settings.speaker
 
+import android.view.View
+import com.xiaomi.settings.utils.applyBottomInsets
 import android.media.AudioAttributes
 import android.media.AudioManager
 import android.media.MediaPlayer
@@ -30,6 +32,11 @@ class ClearSpeakerFragment : SettingsBasePreferenceFragment(),
     private val handler = Handler(Looper.getMainLooper())
     private var mediaPlayer: MediaPlayer? = null
     private var clearSpeakerPref: MainSwitchPreference? = null
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        applyBottomInsets()
+    }
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.clear_speaker_settings, rootKey)

@@ -16,6 +16,8 @@
 
 package com.xiaomi.settings.gamebar
 
+import android.view.View
+import com.xiaomi.settings.utils.applyBottomInsets
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -60,6 +62,11 @@ class GameBarFragment : SettingsBasePreferenceFragment() {
     private var mPositionPref: ListPreference? = null
     private var mSplitModePref: ListPreference? = null
     private var mOverlayFormatPref: ListPreference? = null
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        applyBottomInsets()
+    }
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.game_bar_preferences, rootKey)

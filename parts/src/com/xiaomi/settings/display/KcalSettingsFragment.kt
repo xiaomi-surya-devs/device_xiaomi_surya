@@ -6,6 +6,8 @@
 
 package com.xiaomi.settings.display
 
+import android.view.View
+import com.xiaomi.settings.utils.applyBottomInsets
 import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.preference.Preference
@@ -22,6 +24,11 @@ class KcalSettingsFragment : SettingsBasePreferenceFragment(),
     private var kcalSwitch: MainSwitchPreference? = null
     private var resetButton: Preference? = null
     private val sliders = mutableListOf<SeekBarPreference>()
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        applyBottomInsets()
+    }
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.kcal_settings, rootKey)

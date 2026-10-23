@@ -6,6 +6,8 @@
 
 package com.xiaomi.settings.battery
 
+import android.view.View
+import com.xiaomi.settings.utils.applyBottomInsets
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
@@ -21,6 +23,11 @@ class ChargingControlFragment : SettingsBasePreferenceFragment(),
     private var mLimitPref: SliderPreference? = null
     private var mStartLimitPref: SliderPreference? = null
     private var mMasterSwitch: MainSwitchPreference? = null
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        applyBottomInsets()
+    }
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.charging_control_settings, rootKey)

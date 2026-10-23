@@ -16,16 +16,14 @@
 
 package com.xiaomi.settings.hub
 
+import android.view.View
+import com.xiaomi.settings.utils.applyBottomInsets
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
-import android.provider.Settings
-import android.widget.Toast
 import androidx.preference.Preference
 import androidx.preference.PreferenceManager
-import androidx.preference.SeekBarPreference
-import androidx.preference.SwitchPreferenceCompat
 import com.android.settingslib.widget.SettingsBasePreferenceFragment
+import com.android.settingslib.widget.SliderPreference
 import com.xiaomi.settings.R
 import com.xiaomi.settings.battery.ChargingControlActivity
 import com.xiaomi.settings.charge.ChargeActivity
@@ -33,7 +31,6 @@ import com.xiaomi.settings.corecontrol.CoreControlActivity
 import com.xiaomi.settings.dirac.DiracActivity
 import com.xiaomi.settings.display.KcalSettingsActivity
 import com.xiaomi.settings.display.LcdFeaturesPreferenceActivity
-import com.xiaomi.settings.fpsinfo.FpsInfoService
 import com.xiaomi.settings.gamebar.GameBarSettingsActivity
 import com.xiaomi.settings.refreshrate.RefreshActivity
 import com.xiaomi.settings.speaker.ClearSpeakerActivity
@@ -41,6 +38,11 @@ import com.xiaomi.settings.thermal.ThermalActivity
 import com.xiaomi.settings.utils.HapticUtils
 
 class XiaomiPartsFragment : SettingsBasePreferenceFragment() {
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        applyBottomInsets()
+    }
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.xiaomi_parts, rootKey)
@@ -56,56 +58,34 @@ class XiaomiPartsFragment : SettingsBasePreferenceFragment() {
         bindActivity(KEY_THERMAL, ThermalActivity::class.java)
         bindActivity(KEY_CHARGE_BYPASS, ChargeActivity::class.java)
 
-        findPreference<SwitchPreferenceCompat>(KEY_FPS_INFO)?.apply {
-            isChecked = PreferenceManager.getDefaultSharedPreferences(requireContext())
-                .getBoolean(FpsInfoService.PREF_FPS_INFO, false)
-            setOnPreferenceChangeListener { _, newValue ->
-                val enabled = newValue as Boolean
-                if (enabled && !Settings.canDrawOverlays(requireContext())) {
-                    Toast.makeText(
-                        requireContext(),
-                        R.string.fps_overlay_permission_required,
-                        Toast.LENGTH_LONG
-                    ).show()
-                    runCatching {
-                        startActivity(
-                            Intent(
-                                Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
-                                Uri.parse("package:${requireContext().packageName}")
-                            )
-                        )
-                    }
-                    return@setOnPreferenceChangeListener false
-                }
-
-                val serviceIntent = Intent(requireContext(), FpsInfoService::class.java)
-                if (enabled) {
-                    requireContext().startService(serviceIntent)
-                } else {
-                    requireContext().stopService(serviceIntent)
-                }
-                true
-            }
-        }
-
-        findPreference<SeekBarPreference>(KEY_HAPTIC_LEVEL)?.apply {
+        findPreference<SliderPreference>(KEY_HAPTIC_LEVEL)?.apply {
             if (!HapticUtils.isSupported()) {
                 isEnabled = false
                 summary = getString(R.string.haptic_level_summary_incompatible)
                 return@apply
             }
 
-            val level = PreferenceManager.getDefaultSharedPreferences(requireContext())
-                .getInt(HapticUtils.PREF_LEVEL, 80)
+            val level = normalizeHapticLevel(
+                PreferenceManager.getDefaultSharedPreferences(requireContext())
+                    .getInt(HapticUtils.PREF_LEVEL, HAPTIC_DEFAULT)
+            )
+            sliderIncrement = HAPTIC_STEP
+            setTickVisible(true)
             value = level
-            summary = level.toString()
+            summary = getString(R.string.haptic_level_summary, level)
             setOnPreferenceChangeListener { _, newValue ->
-                val newLevel = newValue as Int
-                summary = newLevel.toString()
+                val newLevel = normalizeHapticLevel(newValue as Int)
+                summary = getString(R.string.haptic_level_summary, newLevel)
                 HapticUtils.applyLevel(requireContext(), newLevel, true)
                 true
             }
         }
+    }
+
+    private fun normalizeHapticLevel(value: Int): Int {
+        val maxAligned = HAPTIC_MAX - (HAPTIC_MAX - HAPTIC_MIN) % HAPTIC_STEP
+        val clamped = value.coerceIn(HAPTIC_MIN, maxAligned)
+        return HAPTIC_MIN + ((clamped - HAPTIC_MIN + HAPTIC_STEP / 2) / HAPTIC_STEP) * HAPTIC_STEP
     }
 
     private fun bindActivity(key: String, activity: Class<*>) {
@@ -126,7 +106,10 @@ class XiaomiPartsFragment : SettingsBasePreferenceFragment() {
         private const val KEY_REFRESH_RATE = "parts_refresh_rate"
         private const val KEY_THERMAL = "parts_thermal"
         private const val KEY_CHARGE_BYPASS = "parts_charge_bypass"
-        private const val KEY_FPS_INFO = "fps_info"
         private const val KEY_HAPTIC_LEVEL = HapticUtils.PREF_LEVEL
+        private const val HAPTIC_DEFAULT = 80
+        private const val HAPTIC_MIN = 0
+        private const val HAPTIC_MAX = 100
+        private const val HAPTIC_STEP = 5
     }
 }

@@ -6,6 +6,8 @@
 
 package com.xiaomi.settings.dirac
 
+import android.view.View
+import com.xiaomi.settings.utils.applyBottomInsets
 import android.os.Bundle
 import androidx.preference.ListPreference
 import androidx.preference.Preference
@@ -27,6 +29,11 @@ class DiracSettingsFragment : SettingsBasePreferenceFragment(),
     private var headsetPref: ListPreference? = null
     private var presetPref: ListPreference? = null
     private var scenePref: ListPreference? = null
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        applyBottomInsets()
+    }
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.dirac_settings, rootKey)

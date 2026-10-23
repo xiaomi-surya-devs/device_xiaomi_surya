@@ -6,6 +6,8 @@
 
 package com.xiaomi.settings.thermal
 
+import android.view.View
+import com.xiaomi.settings.utils.applyBottomInsets
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.drawable.Drawable
@@ -24,6 +26,11 @@ class ThermalSettingsFragment : SettingsBasePreferenceFragment() {
         val label: String,
         val icon: Drawable?
     )
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        applyBottomInsets()
+    }
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         val context = requireContext()

@@ -6,6 +6,8 @@
 
 package com.xiaomi.settings.refreshrate
 
+import android.view.View
+import com.xiaomi.settings.utils.applyBottomInsets
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
@@ -17,6 +19,11 @@ import com.xiaomi.settings.R
 import java.util.Locale
 
 class RefreshSettingsFragment : SettingsBasePreferenceFragment() {
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        applyBottomInsets()
+    }
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         val context = requireContext()

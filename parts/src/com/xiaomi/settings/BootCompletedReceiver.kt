@@ -19,7 +19,6 @@ import com.xiaomi.settings.battery.ChargingLimitService
 import com.xiaomi.settings.charge.ChargeUtils
 import com.xiaomi.settings.dirac.DiracUtils
 import com.xiaomi.settings.display.KcalUtils
-import com.xiaomi.settings.fpsinfo.FpsInfoService
 import com.xiaomi.settings.refreshrate.RefreshUtils
 import com.xiaomi.settings.thermal.ThermalUtils
 import com.xiaomi.settings.utils.HapticUtils
@@ -68,12 +67,6 @@ class BootCompletedReceiver : BroadcastReceiver() {
 
         RefreshUtils.startService(context)
         ThermalUtils.startService(context)
-
-        if (prefs.getBoolean(FpsInfoService.PREF_FPS_INFO, false)) {
-            runCatching {
-                context.startService(Intent(context, FpsInfoService::class.java))
-            }.onFailure { Log.e(TAG, "Failed to start FpsInfoService", it) }
-        }
     }
 
     private fun onLockedBootCompleted(context: Context) {

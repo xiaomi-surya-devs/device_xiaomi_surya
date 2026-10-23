@@ -6,6 +6,8 @@
 
 package com.xiaomi.settings.charge
 
+import android.view.View
+import com.xiaomi.settings.utils.applyBottomInsets
 import android.os.Bundle
 import androidx.preference.Preference
 import com.android.settingslib.widget.MainSwitchPreference
@@ -17,6 +19,11 @@ class ChargeSettingsFragment : SettingsBasePreferenceFragment(),
 
     private var bypassCharge: MainSwitchPreference? = null
     private lateinit var chargeUtils: ChargeUtils
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        applyBottomInsets()
+    }
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.charge_settings, rootKey)
