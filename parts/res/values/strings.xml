@@ -5,27 +5,6 @@
 <string name="app_name">Xiaomi Parts</string>
 
     
-    <string name="htsr_title">Enhanced Touch Responsiveness</string>
-
-    
-    <string name="htsr_enable_title">Enable High Touch Polling Rate</string>
-
-    
-    <string name="htsr_enable_summary">
-        Boosts the touch polling rate to reduce input latency, delivering a smoother and more responsive user experience.
-    </string>
-
-    
-    <string name="htsr_auto_enable_title">Auto-enable for selected apps</string>
-    <string name="htsr_auto_enable_summary">Automatically enable touch boost for selected foreground apps</string>
-    <string name="htsr_choose_apps_title">Choose boosted apps</string>
-    <string name="htsr_choose_apps_summary">Select apps that should use high touch polling rate</string>
-    <string name="htsr_app_added">%1$s added.</string>
-    <string name="touch_sampling_tile_label">Touch Boost</string>
-    <string name="touch_sampling_mode_title">High Touch Polling Mode</string>
-    <string name="touch_sampling_mode_notification">High Touch Polling Rate is now active. This reduces touch input latency but may increase battery consumption</string>
-
-    
     <string name="core_control_title">Core Control</string>
     <string name="core_control_summary">Manually enable or disable individual CPU cores</string>
     <string name="core_control_description">Advanced CPU control. Turning off cores may save battery or thermal load, but may affect performance and stability.\n\nAt least two little cores must remain online at all times.</string>

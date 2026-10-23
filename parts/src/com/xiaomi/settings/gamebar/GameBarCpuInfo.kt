@@ -27,8 +27,8 @@ object GameBarCpuInfo {
     private var sPrevIdle: Long = -1
     private var sPrevTotal: Long = -1
 
-    private val CPU_TEMP_PATHS = Array(16) { i ->
-        "/sys/class/thermal/thermal_zone" + (10 + i) + "/temp"
+    private val CPU_TEMP_PATHS: List<String> = ThermalZones.paths { type ->
+        type.endsWith("-usr") && (type.startsWith("cpu-") || type.startsWith("cpuss-"))
     }
 
     val cpuUsage: String

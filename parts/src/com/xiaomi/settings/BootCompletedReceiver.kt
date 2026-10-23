@@ -14,8 +14,6 @@ import android.os.UserHandle
 import android.util.Log
 import android.view.Display
 import android.view.Display.HdrCapabilities
-import com.xiaomi.settings.touchsampling.TouchSamplingService
-import com.xiaomi.settings.touchsampling.TouchSamplingTileService
 import com.xiaomi.settings.battery.ChargingLimitService
 
 /** Everything begins at boot. */
@@ -50,15 +48,6 @@ class BootCompletedReceiver : BroadcastReceiver() {
     }
 
     private fun onLockedBootCompleted(context: Context) {
-        // Touch Sampling
-        context.startServiceAsUser(Intent(context, TouchSamplingService::class.java), UserHandle.CURRENT)
-
-        // Touch Sampling qs
-        context.startServiceAsUser(
-            Intent(context, TouchSamplingTileService::class.java),
-            UserHandle.CURRENT
-        )
-
         // Override HDR types to enable Dolby Vision
         val displayManager = context.getSystemService(DisplayManager::class.java)
         displayManager?.overrideHdrTypes(Display.DEFAULT_DISPLAY, intArrayOf(

@@ -22,11 +22,9 @@ import java.io.IOException
 
 object GameBarGpuInfo {
 
-    private val GPU_TEMP_PATHS = arrayOf(
-        "/sys/class/thermal/thermal_zone35/temp",
-        "/sys/class/thermal/thermal_zone36/temp",
-        "/sys/class/thermal/thermal_zone37/temp"
-    )
+    private val GPU_TEMP_PATHS: List<String> = ThermalZones.paths { type ->
+        type.startsWith("gpuss-") && (type.endsWith("-usr") || type.endsWith("-max-step"))
+    }
 
     val gpuTemp: String
         get() {

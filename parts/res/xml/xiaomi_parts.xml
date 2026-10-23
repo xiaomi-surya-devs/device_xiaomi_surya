@@ -12,12 +12,6 @@
             android:icon="@drawable/ic_gamebar" />
 
         <Preference
-            android:key="parts_touch_sampling"
-            android:title="@string/htsr_title"
-            android:summary="@string/htsr_enable_summary"
-            android:icon="@drawable/ic_touch_sampling_tile" />
-
-        <Preference
             android:key="parts_core_control"
             android:title="@string/core_control_title"
             android:summary="@string/core_control_summary"

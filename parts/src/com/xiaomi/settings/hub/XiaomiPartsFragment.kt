@@ -24,7 +24,6 @@ import com.xiaomi.settings.R
 import com.xiaomi.settings.battery.ChargingControlActivity
 import com.xiaomi.settings.corecontrol.CoreControlActivity
 import com.xiaomi.settings.gamebar.GameBarSettingsActivity
-import com.xiaomi.settings.touchsampling.TouchSamplingSettingsActivity
 
 class XiaomiPartsFragment : SettingsBasePreferenceFragment() {
 
@@ -33,11 +32,6 @@ class XiaomiPartsFragment : SettingsBasePreferenceFragment() {
 
         findPreference<Preference>(KEY_GAME_BAR)?.setOnPreferenceClickListener {
             startActivity(Intent(context, GameBarSettingsActivity::class.java))
-            true
-        }
-
-        findPreference<Preference>(KEY_TOUCH_SAMPLING)?.setOnPreferenceClickListener {
-            startActivity(Intent(context, TouchSamplingSettingsActivity::class.java))
             true
         }
 
@@ -54,7 +48,6 @@ class XiaomiPartsFragment : SettingsBasePreferenceFragment() {
 
     companion object {
         private const val KEY_GAME_BAR = "parts_game_bar"
-        private const val KEY_TOUCH_SAMPLING = "parts_touch_sampling"
         private const val KEY_CORE_CONTROL = "parts_core_control"
         private const val KEY_CHARGING_CONTROL = "parts_charging_control"
     }
