@@ -20,3 +20,9 @@ ro.build.flavor                    u:object_r:exported_default_prop:s0
 ro.cust.test                       u:object_r:exported_system_prop:s0
 ro.miui.                           u:object_r:exported_system_prop:s0
 ro.product.mod_device              u:object_r:exported_default_prop:s0
+
+# LCD feature properties
+persist.lcd.                       u:object_r:persist_lcd_prop:s0
+
+# Thermal performance profile
+sys.perf_profile                   u:object_r:sys_perf_profile_prop:s0

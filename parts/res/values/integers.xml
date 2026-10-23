@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="haptic_level_default">80</integer>
+    <integer name="haptic_level_max">100</integer>
+</resources>

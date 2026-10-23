@@ -16,6 +16,7 @@
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS" tools:ignore="ProtectedPermissions" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
@@ -118,6 +119,127 @@
             android:label="@string/core_control_title"
             android:theme="@style/Theme.SubSettingsBase"
             android:exported="true" />
+
+        <!-- Dirac -->
+        <activity
+            android:name=".dirac.DiracActivity"
+            android:label="@string/dirac_title"
+            android:theme="@style/Theme.SubSettingsBase"
+            android:exported="false" />
+
+        <!-- Clear Speaker -->
+        <activity
+            android:name=".speaker.ClearSpeakerActivity"
+            android:label="@string/clear_speaker_title"
+            android:theme="@style/Theme.SubSettingsBase"
+            android:exported="false" />
+
+        <!-- KCAL -->
+        <activity
+            android:name=".display.KcalSettingsActivity"
+            android:label="@string/kcal_settings_title"
+            android:theme="@style/Theme.SubSettingsBase"
+            android:exported="false" />
+
+        <!-- LCD features -->
+        <activity
+            android:name=".display.LcdFeaturesPreferenceActivity"
+            android:label="@string/lcd_features_title"
+            android:theme="@style/Theme.SubSettingsBase"
+            android:exported="false" />
+
+        <!-- Refresh rate -->
+        <activity
+            android:name=".refreshrate.RefreshActivity"
+            android:label="@string/refresh_title"
+            android:theme="@style/Theme.SubSettingsBase"
+            android:exported="false" />
+
+        <!-- Thermal -->
+        <activity
+            android:name=".thermal.ThermalActivity"
+            android:label="@string/thermal_title"
+            android:theme="@style/Theme.SubSettingsBase"
+            android:exported="false" />
+
+        <!-- Bypass charging -->
+        <activity
+            android:name=".charge.ChargeActivity"
+            android:label="@string/charge_bypass_title"
+            android:theme="@style/Theme.SubSettingsBase"
+            android:exported="false" />
+
+        <!-- Feature services -->
+        <service
+            android:name=".refreshrate.RefreshService"
+            android:exported="false" />
+
+        <service
+            android:name=".thermal.ThermalService"
+            android:exported="false" />
+
+        <service
+            android:name=".fpsinfo.FpsInfoService"
+            android:exported="false" />
+
+        <!-- Quick Settings tiles -->
+        <service
+            android:name=".display.HbmTileService"
+            android:label="@string/lcd_hbm_tile_title"
+            android:icon="@drawable/ic_hbm"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+        </service>
+
+        <service
+            android:name=".display.CabcTileService"
+            android:label="@string/lcd_cabc_title"
+            android:icon="@drawable/ic_cabc"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+        </service>
+
+        <service
+            android:name=".refreshrate.RefreshTileService"
+            android:label="@string/refresh_rate_tile_title"
+            android:icon="@drawable/ic_refresh_tile"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+        </service>
+
+        <service
+            android:name=".charge.BypassChargingTileService"
+            android:label="@string/charge_bypass_title"
+            android:icon="@drawable/ic_bypass_charging"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+        </service>
+
+        <service
+            android:name=".fpsinfo.FpsTileService"
+            android:label="@string/fps_info_title"
+            android:icon="@drawable/ic_fps"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.service.quicksettings.TOGGLEABLE_TILE"
+                android:value="true" />
+        </service>
 
         <!-- Backlight disabled -->
 

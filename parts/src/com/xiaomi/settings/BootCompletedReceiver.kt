@@ -14,7 +14,15 @@ import android.os.UserHandle
 import android.util.Log
 import android.view.Display
 import android.view.Display.HdrCapabilities
+import androidx.preference.PreferenceManager
 import com.xiaomi.settings.battery.ChargingLimitService
+import com.xiaomi.settings.charge.ChargeUtils
+import com.xiaomi.settings.dirac.DiracUtils
+import com.xiaomi.settings.display.KcalUtils
+import com.xiaomi.settings.fpsinfo.FpsInfoService
+import com.xiaomi.settings.refreshrate.RefreshUtils
+import com.xiaomi.settings.thermal.ThermalUtils
+import com.xiaomi.settings.utils.HapticUtils
 
 /** Everything begins at boot. */
 class BootCompletedReceiver : BroadcastReceiver() {
@@ -32,8 +40,7 @@ class BootCompletedReceiver : BroadcastReceiver() {
         }
 
         // Override HDR types
-        val displayManager = context.getSystemService(DisplayManager::class.java)
-        displayManager.overrideHdrTypes(
+        context.getSystemService(DisplayManager::class.java)?.overrideHdrTypes(
             Display.DEFAULT_DISPLAY,
             intArrayOf(
                 HdrCapabilities.HDR_TYPE_DOLBY_VISION,
@@ -45,18 +52,31 @@ class BootCompletedReceiver : BroadcastReceiver() {
     }
 
     private fun onBootCompleted(context: Context) {
+        val prefs = PreferenceManager.getDefaultSharedPreferences(context)
+
+        runCatching { DiracUtils.onBootCompleted(context) }
+            .onFailure { Log.e(TAG, "Failed to restore Dirac state", it) }
+
+        runCatching { KcalUtils.writeCurrentSettings(prefs) }
+            .onFailure { Log.e(TAG, "Failed to restore KCAL state", it) }
+
+        runCatching { HapticUtils.restoreLevel(context) }
+            .onFailure { Log.e(TAG, "Failed to restore haptic level", it) }
+
+        runCatching { ChargeUtils(context).enableBypassCharge(false) }
+            .onFailure { Log.e(TAG, "Failed to disable bypass charging", it) }
+
+        RefreshUtils.startService(context)
+        ThermalUtils.startService(context)
+
+        if (prefs.getBoolean(FpsInfoService.PREF_FPS_INFO, false)) {
+            runCatching {
+                context.startService(Intent(context, FpsInfoService::class.java))
+            }.onFailure { Log.e(TAG, "Failed to start FpsInfoService", it) }
+        }
     }
 
     private fun onLockedBootCompleted(context: Context) {
-        // Override HDR types to enable Dolby Vision
-        val displayManager = context.getSystemService(DisplayManager::class.java)
-        displayManager?.overrideHdrTypes(Display.DEFAULT_DISPLAY, intArrayOf(
-            HdrCapabilities.HDR_TYPE_DOLBY_VISION,
-            HdrCapabilities.HDR_TYPE_HDR10,
-            HdrCapabilities.HDR_TYPE_HLG,
-            HdrCapabilities.HDR_TYPE_HDR10_PLUS
-        ))
-
         // Battery
         context.startServiceAsUser(Intent(context, ChargingLimitService::class.java), UserHandle.CURRENT)
     }

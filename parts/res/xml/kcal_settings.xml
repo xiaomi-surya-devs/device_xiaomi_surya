@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/kcal_settings_title">
+
+    <com.android.settingslib.widget.MainSwitchPreference
+        android:defaultValue="false"
+        android:key="kcal_enable"
+        android:title="@string/kcal_enable" />
+
+    <PreferenceCategory
+        android:key="kcal_rgb_preference_category"
+        android:title="@string/kcal_rgb_preference_category_title">
+
+        <androidx.preference.SeekBarPreference
+            android:key="red_slider"
+            android:defaultValue="256"
+            android:dependency="kcal_enable"
+            android:max="256"
+            android:title="@string/red_slider_title" />
+
+        <androidx.preference.SeekBarPreference
+            android:key="green_slider"
+            android:defaultValue="256"
+            android:dependency="kcal_enable"
+            android:max="256"
+            android:title="@string/green_slider_title" />
+
+        <androidx.preference.SeekBarPreference
+            android:key="blue_slider"
+            android:defaultValue="256"
+            android:dependency="kcal_enable"
+            android:max="256"
+            android:title="@string/blue_slider_title" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="kcal_calibration_preference_category"
+        android:title="@string/kcal_calibration_preference_category_title">
+
+        <androidx.preference.SeekBarPreference
+            android:key="saturation_slider"
+            android:defaultValue="255"
+            android:dependency="kcal_enable"
+            android:max="383"
+            android:title="@string/saturation_slider_title" />
+
+        <androidx.preference.SeekBarPreference
+            android:key="contrast_slider"
+            android:defaultValue="255"
+            android:dependency="kcal_enable"
+            android:max="383"
+            android:title="@string/contrast_slider_title" />
+
+        <androidx.preference.SeekBarPreference
+            android:key="hue_slider"
+            android:defaultValue="0"
+            android:dependency="kcal_enable"
+            android:max="255"
+            android:title="@string/hue_slider_title" />
+
+        <androidx.preference.SeekBarPreference
+            android:key="brightness_slider"
+            android:defaultValue="255"
+            android:dependency="kcal_enable"
+            android:max="383"
+            android:title="@string/brightness_slider_title" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="reset_category"
+        android:title="@string/reset_category_title">
+
+        <Preference
+            android:key="reset_default_button"
+            android:title="@string/reset_default_button_title"
+            android:icon="@drawable/ic_reset"
+            android:summary="@string/reset_default_button_summary" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

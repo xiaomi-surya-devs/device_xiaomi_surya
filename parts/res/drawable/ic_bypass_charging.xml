@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24"
+    android:tint="?android:attr/colorControlNormal">
+
+    <!-- Battery body -->
+    <path
+        android:fillColor="#ff000000"
+        android:fillType="evenOdd"
+        android:pathData="
+            M16,5 C17.105,5 18,5.895 18,7 L18,20 C18,21.105 17.105,22 16,22
+            L8,22 C6.895,22 6,21.105 6,20 L6,7 C6,5.895 6.895,5 8,5 Z
+            M16,6.5 L8,6.5 C7.724,6.5 7.5,6.724 7.5,7 L7.5,20
+            C7.5,20.276 7.724,20.5 8,20.5 L16,20.5
+            C16.276,20.5 16.5,20.276 16.5,20 L16.5,7
+            C16.5,6.724 16.276,6.5 16,6.5 Z
+            M10,3.5 L10,5 L14,5 L14,3.5 Z" />
+
+    <!-- Lightning bolt -->
+    <path
+        android:fillColor="#ff000000"
+        android:fillType="evenOdd"
+        android:pathData="M13,8.5L10,14.5L12,14.5L10.5,19.5L15,13L12.5,13Z" />
+
+</vector>

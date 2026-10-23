@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <PreferenceCategory
         android:title="@string/parts_settings_category_title">
@@ -22,6 +23,62 @@
             android:title="@string/charging_control_title"
             android:summary="@string/charging_control_summary"
             android:icon="@drawable/ic_charging_control" />
+
+        <Preference
+            android:key="parts_dirac"
+            android:title="@string/dirac_title"
+            android:summary="@string/dirac_summary"
+            android:icon="@drawable/ic_dirac" />
+
+        <Preference
+            android:key="parts_clear_speaker"
+            android:title="@string/clear_speaker_title"
+            android:summary="@string/clear_speaker_summary"
+            android:icon="@drawable/ic_clear_speaker" />
+
+        <Preference
+            android:key="parts_kcal"
+            android:title="@string/kcal_settings_title"
+            android:summary="@string/kcal_settings_summary"
+            android:icon="@drawable/ic_kcal" />
+
+        <Preference
+            android:key="parts_lcd_features"
+            android:title="@string/lcd_features_title"
+            android:summary="@string/lcd_features_summary"
+            android:icon="@drawable/ic_hbm" />
+
+        <Preference
+            android:key="parts_refresh_rate"
+            android:title="@string/refresh_title"
+            android:summary="@string/refresh_summary"
+            android:icon="@drawable/ic_refresh_rate" />
+
+        <Preference
+            android:key="parts_thermal"
+            android:title="@string/thermal_title"
+            android:summary="@string/thermal_summary"
+            android:icon="@drawable/ic_thermal_settings" />
+
+        <Preference
+            android:key="parts_charge_bypass"
+            android:title="@string/charge_bypass_title"
+            android:summary="@string/charge_bypass_summary"
+            android:icon="@drawable/ic_bypass_charging" />
+
+        <SwitchPreferenceCompat
+            android:key="fps_info"
+            android:defaultValue="false"
+            android:title="@string/fps_info_title"
+            android:summary="@string/fps_info_summary"
+            android:icon="@drawable/ic_fps" />
+
+        <androidx.preference.SeekBarPreference
+            android:key="haptic_level_pref"
+            android:defaultValue="80"
+            android:max="100"
+            android:title="@string/haptic_level_title"
+            app:min="1" />
 
     </PreferenceCategory>
 

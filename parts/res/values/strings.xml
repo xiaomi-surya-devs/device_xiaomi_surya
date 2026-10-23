@@ -2,9 +2,7 @@
 <resources>
     <string name="doze_settings_help_title">Help</string>
     <string name="doze_settings_help_text">These features use sensor events to launch a doze notification pulse. The chosen sensor is only enabled when the device receives a notification, this helps to reduce battery usage. There is also an option to enable the chosen sensor as soon as the screen turns off, this will cause higher battery usage.</string>
-<string name="app_name">Xiaomi Parts</string>
-
-    
+    <string name="app_name">Xiaomi Parts</string>
     <string name="core_control_title">Core Control</string>
     <string name="core_control_summary">Manually enable or disable individual CPU cores</string>
     <string name="core_control_description">Advanced CPU control. Turning off cores may save battery or thermal load, but may affect performance and stability.\n\nAt least two little cores must remain online at all times.</string>
@@ -16,8 +14,6 @@
     <string name="core_5">Core 5 (Big)</string>
     <string name="core_6">Core 6 (Big)</string>
     <string name="core_7">Core 7 (Prime)</string>
-
-    
     <string name="charging_control_title">Charging Control</string>
     <string name="charging_limit_title">Stop at Percentage</string>
     <string name="charging_limit_summary">Current limit: %1$d%%</string>
@@ -25,8 +21,6 @@
     <string name="charging_start_limit_summary">Charging starts at: %1$d%%</string>
     <string name="charging_threshold_error">Start percentage must be lower than stop percentage</string>
     <string name="charging_control_summary">Improve battery lifespan by limiting Charge Percentage</string>
-
-    
     <string name="game_bar_title">Game Bar</string>
     <string name="game_bar_summary">Enable the system overlay (FPS, Temp, etc.)</string>
     <string name="overlay_permission_required">Overlay permission is required</string>
@@ -34,8 +28,6 @@
     <string name="overlay_permission_denied">Overlay permission denied</string>
     <string name="game_bar_tile_label">Game Bar</string>
     <string name="game_bar_tile_description">Toggle the game overlay</string>
-
-    
     <string name="game_bar_enable_title">Enable Game Bar Overlay</string>
     <string name="game_bar_category_features">Overlay Features</string>
     <string name="game_bar_fps_title">FPS Overlay</string>
@@ -100,46 +92,34 @@
     <string name="game_bar_auto_enable_summary">If turned on, selected apps will auto-enable Game Bar even if the main switch is off</string>
     <string name="game_bar_app_selector_title">Select Apps</string>
     <string name="game_bar_app_selector_summary">Add apps that should auto-enable Game Bar</string>
-
-    
     <string name="xiaomi_parts_title">Xiaomi Parts</string>
     <string name="xiaomi_parts_summary">Game Bar, Touch Sampling, Charging Control and Core Control</string>
     <string name="parts_settings_category_title">ilystack27</string>
-
-    
     <string name="light_settings_title" translatable="false">Back Light Effects</string>
     <string name="light_settings_summary" translatable="false">Configure RGB LED on the back</string>
     <string name="light_enable_title">Enable back light effects</string>
-
     <string name="light_incoming_call_title">Incoming calls</string>
     <string name="light_incoming_call_summary">Pulse LED during incoming calls</string>
     <string name="light_incoming_call_color_title">Incoming call color</string>
-
     <string name="light_notifications_title">Notifications</string>
     <string name="light_notifications_summary">Pulse LED for app notifications</string>
     <string name="light_notifications_color_title">Notification color</string>
     <string name="light_notifications_apps_title">Select apps for notifications</string>
-
     <string name="light_dynamic_notifications_title">Dynamic notifications</string>
     <string name="light_dynamic_notifications_summary">Pulse top and bottom LED with different random colors for app notifications</string>
     <string name="light_dynamic_notifications_apps_title">Select apps for dynamic notifications</string>
-
     <string name="light_music_title">Rhythmic light effects</string>
     <string name="light_music_summary">Follow up beat, rhythm and bass of music</string>
     <string name="light_music_apps_title">Select music apps</string>
-
     <string name="light_standalone_title">Standalone colors</string>
     <string name="light_standalone_summary">Keep LED on with a specific color</string>
     <string name="light_standalone_enable_title">Enable standalone LEDs</string>
     <string name="light_standalone_color_title">Standalone color</string>
-
     <string name="light_game_mode_title">Game mode</string>
     <string name="light_game_mode_summary">Enable breathing LED while playing games</string>
     <string name="light_game_mode_apps_title">Select games</string>
-
     <string name="light_charging_title">Charging state</string>
     <string name="light_charging_summary">Pulse LED colors based on battery level</string>
-
     <string name="color_red">Red</string>
     <string name="color_orange">Orange</string>
     <string name="color_yellow">Yellow</string>
@@ -148,4 +128,117 @@
     <string name="color_blue">Blue</string>
     <string name="color_purple">Purple</string>
     <string name="color_gradient">Gradient</string>
+    <string name="disabled">Disabled</string>
+    <string name="dirac_title">Dirac</string>
+    <string name="dirac_enable">Enable audio optimizer</string>
+    <string name="dirac_summary">Optimize audio quality</string>
+    <string name="dirac_headset_title">Choose headphones type</string>
+    <string name="dirac_preset_title">Choose a preset</string>
+    <string name="dirac_unsupported">Dirac audio optimization is not supported on this device</string>
+    <string name="dirac_headset_default">Default</string>
+    <string name="dirac_headset_earbuds">Mi Earbuds</string>
+    <string name="dirac_headset_in_ear_2013">Mi In-Ear (2013)</string>
+    <string name="dirac_headset_piston_1">Mi Piston-1</string>
+    <string name="dirac_headset_general">General</string>
+    <string name="dirac_headset_general_inear">General In-Ear</string>
+    <string name="dirac_headset_piston_basic">Basic Edition</string>
+    <string name="dirac_headset_piston_2">Mi Piston-2</string>
+    <string name="dirac_headset_piston_standard">Standard Edition</string>
+    <string name="dirac_headset_headphone">Mi Headphones</string>
+    <string name="dirac_headset_piston_youth">Youth Edition</string>
+    <string name="dirac_headset_piston_color">Color Edition</string>
+    <string name="dirac_headset_in_ear">Mi In-Ear</string>
+    <string name="dirac_headset_capsule">Mi Capsule</string>
+    <string name="dirac_headset_in_ear_pro">Mi In-Ear Pro</string>
+    <string name="dirac_headset_comfort">Mi Comfort</string>
+    <string name="dirac_headset_reduction_noise">Mi Noise Cancelling Type-C</string>
+    <string name="dirac_headset_cancelling">Mi Noise Cancelling 3.5mm</string>
+    <string name="dirac_headset_half_in_ear">Mi Half In-Ear</string>
+    <string name="dirac_headset_in_ear2">Mi In-Ear 2</string>
+    <string name="dirac_headset_earphone_basic">Mi Earphones Basic</string>
+    <string name="dirac_headset_earphone">Mi Earphones</string>
+    <string name="dirac_headset_ear_four">Mi Quadruple Driver Earphones</string>
+    <string name="dirac_headset_piston_typec">Mi In-Ear Headphones (Type-C)</string>
+    <string name="dirac_headset_bluetooth_collar">Mi Bluetooth Neckband</string>
+    <string name="dirac_headset_bluetooth_linefree">Mi Bluetooth Earphones</string>
+    <string name="dirac_headset_redmi_earphones">Redmi Earphones</string>
+    <string name="dirac_headset_dual_driver_in_ear">Mi Dual Driver In-ear Earphones</string>
+    <string name="dirac_preset_default">Default</string>
+    <string name="dirac_preset_rock">Rock</string>
+    <string name="dirac_preset_jazz">Jazz</string>
+    <string name="dirac_preset_pop">Pop</string>
+    <string name="dirac_preset_classical">Classical</string>
+    <string name="dirac_preset_hiphop">Hip Hop</string>
+    <string name="dirac_preset_blues">Blues</string>
+    <string name="dirac_preset_electronic">Electronic</string>
+    <string name="dirac_preset_country">Country</string>
+    <string name="dirac_preset_dance">Dance</string>
+    <string name="dirac_preset_metal">Metal</string>
+    <string name="dirac_preset_bass_booster">Bass Booster</string>
+    <string name="dirac_preset_live">Live</string>
+    <string name="dirac_preset_balanced">Balanced</string>
+    <string name="dirac_preset_bass_reduction">Bass Reduction</string>
+    <string name="dirac_preset_treble_reduction">Treble Reduction</string>
+    <string name="dirac_preset_soft_bass">Soft Bass</string>
+    <string name="dirac_preset_soft_treble">Soft Treble</string>
+    <string name="music_headset_scenario_select">Select scene</string>
+    <string name="music_headset_scenario_intelligent">Smart</string>
+    <string name="music_headset_scenario_music">Music</string>
+    <string name="music_headset_scenario_video">Video</string>
+    <string name="music_headset_scenario_vocal">Voice</string>
+    <string name="thermal_title">Thermal profiles</string>
+    <string name="thermal_summary">Set a thermal profile for each application</string>
+    <string name="thermal_apps_category">Applications</string>
+    <string name="thermal_default">Default</string>
+    <string name="thermal_performance">Performance</string>
+    <string name="thermal_camera">Camera</string>
+    <string name="thermal_dialer">Dialer</string>
+    <string name="clear_speaker_title">Clear speaker</string>
+    <string name="clear_speaker_enable">Use Clear speaker</string>
+    <string name="clear_speaker_summary">Play a 30-second audio to clear the speaker</string>
+    <string name="clear_speaker_description">Run this feature once or twice if you find that your speaker is lightly blocked by dust. Set media volume to maximum.\n\nIf the speaker is blocked heavily, run this feature 2-5 times while shaking your device with the speaker facing downwards.\n\nWARNING: Ensure that any headphones are unplugged.</string>
+    <string name="kcal_settings_title">KCAL</string>
+    <string name="kcal_settings_summary">Adjust the colors of your display using KCAL</string>
+    <string name="kcal_enable">Use KCAL</string>
+    <string name="kcal_not_supported">Display color settings is not supported by the kernel</string>
+    <string name="red_slider_title">Red</string>
+    <string name="green_slider_title">Green</string>
+    <string name="blue_slider_title">Blue</string>
+    <string name="hue_slider_title">Hue</string>
+    <string name="brightness_slider_title">Brightness</string>
+    <string name="kcal_rgb_preference_category_title">RGB</string>
+    <string name="kcal_calibration_preference_category_title">Color calibration</string>
+    <string name="saturation_slider_title">Saturation</string>
+    <string name="reset_default_button_title">Reset to default configuration</string>
+    <string name="reset_default_button_summary">Reset all the configurations of this screen</string>
+    <string name="contrast_slider_title">Contrast</string>
+    <string name="reset_category_title">Reset</string>
+    <string name="lcd_features_title">LCD features</string>
+    <string name="lcd_features_summary">High Brightness Mode, CABC</string>
+    <string name="lcd_hbm_title">High Brightness Mode (HBM)</string>
+    <string name="lcd_hbm_tile_title">HBM</string>
+    <string name="lcd_hbm_medium">Medium</string>
+    <string name="lcd_hbm_high">High</string>
+    <string name="lcd_cabc_title">CABC Mode</string>
+    <string name="lcd_cabc_low">Low (UI)</string>
+    <string name="lcd_cabc_medium">Medium (Videos)</string>
+    <string name="lcd_cabc_high">High (Images)</string>
+    <string name="lcd_features_info">High Brightness Mode (HBM) increases the maximum brightness of the display to improve visibility under sunlight. Increases power consumption.\n\nCABC (Content Adaptive Backlight Control) adjusts display and backlight brightness based on currently shown content, to reduce power consumption without degradation.</string>
+    <string name="refresh_title">Per-app refresh rate</string>
+    <string name="refresh_summary">Set a specific refresh rate for each application</string>
+    <string name="refresh_apps_category">Applications</string>
+    <string name="refresh_default">Default</string>
+    <string name="refresh_rate_tile_title">Refresh Rate</string>
+    <string name="haptic_level_title">Haptic feedback level</string>
+    <string name="haptic_level_summary_incompatible">Feature not supported</string>
+    <string name="fps_info_title">FPS Counter</string>
+    <string name="fps_info_summary">Show the current display frame rate</string>
+    <string name="fps_overlay_permission_required">Overlay permission is required for the FPS counter</string>
+    <string name="charging_title">Charging</string>
+    <string name="charge_bypass_title">Bypass charging</string>
+    <string name="charge_bypass_enable">Enable bypass charging</string>
+    <string name="charge_bypass_summary">Pass power directly to device, skipping battery</string>
+    <string name="charge_bypass_warning">Bypass charging may increase device temperature. Use with caution.</string>
+    <string name="charge_bypass_unavailable">Bypass charging is not supported on this device</string>
+    <string name="charge_bypass_description">When enabled, power goes directly to the device and bypasses the battery. Useful when plugged in for long periods to reduce battery wear. Make sure your kernel supports bypass charging.</string>
 </resources>
