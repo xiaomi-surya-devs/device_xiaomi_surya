@@ -36,7 +36,7 @@ class DiracSettingsFragment : SettingsBasePreferenceFragment(),
         val supported = DiracUtils.isSupported()
         val enabled = supported && DiracUtils.isDiracEnabled()
 
-        enableSwitch = findPreference(PREF_ENABLE)?.apply {
+        enableSwitch = findPreference<MainSwitchPreference>(PREF_ENABLE)?.apply {
             isEnabled = supported
             isChecked = enabled
             if (!supported) {
@@ -50,15 +50,15 @@ class DiracSettingsFragment : SettingsBasePreferenceFragment(),
             }
         }
 
-        headsetPref = findPreference(PREF_HEADSET)?.apply {
+        headsetPref = findPreference<ListPreference>(PREF_HEADSET)?.apply {
             isEnabled = supported && enabled
             onPreferenceChangeListener = this@DiracSettingsFragment
         }
-        presetPref = findPreference(PREF_PRESET)?.apply {
+        presetPref = findPreference<ListPreference>(PREF_PRESET)?.apply {
             isEnabled = supported && enabled
             onPreferenceChangeListener = this@DiracSettingsFragment
         }
-        scenePref = findPreference(PREF_SCENE)?.apply {
+        scenePref = findPreference<ListPreference>(PREF_SCENE)?.apply {
             isEnabled = supported && enabled
             onPreferenceChangeListener = this@DiracSettingsFragment
         }

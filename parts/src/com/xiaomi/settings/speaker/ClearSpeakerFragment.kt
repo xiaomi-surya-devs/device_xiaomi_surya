@@ -33,7 +33,7 @@ class ClearSpeakerFragment : SettingsBasePreferenceFragment(),
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.clear_speaker_settings, rootKey)
-        clearSpeakerPref = findPreference(PREF_CLEAR_SPEAKER)?.apply {
+        clearSpeakerPref = findPreference<MainSwitchPreference>(PREF_CLEAR_SPEAKER)?.apply {
             setOnPreferenceChangeListener(this@ClearSpeakerFragment)
         }
     }

@@ -30,10 +30,10 @@ class LcdFeaturesPreferenceFragment : SettingsBasePreferenceFragment(),
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.lcd_features_settings, rootKey)
 
-        hbmPref = findPreference(KEY_HBM)?.apply {
+        hbmPref = findPreference<ListPreference>(KEY_HBM)?.apply {
             onPreferenceChangeListener = this@LcdFeaturesPreferenceFragment
         }
-        cabcPref = findPreference(KEY_CABC)?.apply {
+        cabcPref = findPreference<ListPreference>(KEY_CABC)?.apply {
             onPreferenceChangeListener = this@LcdFeaturesPreferenceFragment
         }
     }

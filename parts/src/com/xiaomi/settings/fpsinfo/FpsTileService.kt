@@ -54,7 +54,7 @@ class FpsTileService : TileService() {
     private fun setEnabledPreference(enabled: Boolean) {
         PreferenceManager.getDefaultSharedPreferences(this)
             .edit()
-            .putBoolean(PREF_FPS_INFO, enabled)
+            .putBoolean(FpsInfoService.PREF_FPS_INFO, enabled)
             .apply()
     }
 }

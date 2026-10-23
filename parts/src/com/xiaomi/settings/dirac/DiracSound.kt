@@ -31,21 +31,21 @@ class DiracSound(priority: Int, audioSession: Int) : AudioEffect(
     }
 
     fun setMusic(enable: Boolean) {
-        checkStatus(setParameter(DIRACSOUND_PARAM_MUSIC, if (enable) 1 else 0))
+        ensureSuccess(setParameter(DIRACSOUND_PARAM_MUSIC, if (enable) 1 else 0))
     }
 
     fun getMusic(): Int {
         val value = intArrayOf(0)
-        checkStatus(getParameter(DIRACSOUND_PARAM_MUSIC, value))
+        ensureSuccess(getParameter(DIRACSOUND_PARAM_MUSIC, value))
         return value[0]
     }
 
     fun setHeadsetType(type: Int) {
-        checkStatus(setParameter(DIRACSOUND_PARAM_HEADSET_TYPE, type))
+        ensureSuccess(setParameter(DIRACSOUND_PARAM_HEADSET_TYPE, type))
     }
 
     fun setLevel(band: Int, level: Float) {
-        checkStatus(
+        ensureSuccess(
             setParameter(
                 intArrayOf(DIRACSOUND_PARAM_EQ_LEVEL, band),
                 level.toString().toByteArray(Charsets.UTF_8)
@@ -54,10 +54,10 @@ class DiracSound(priority: Int, audioSession: Int) : AudioEffect(
     }
 
     fun setScenario(scene: Int) {
-        checkStatus(setParameter(DIRACSOUND_PARAM_SCENE, scene))
+        ensureSuccess(setParameter(DIRACSOUND_PARAM_SCENE, scene))
     }
 
-    private fun checkStatus(status: Int) {
+    private fun ensureSuccess(status: Int) {
         if (status != AudioEffect.SUCCESS) {
             throw IllegalStateException("DiracSound operation failed: $status")
         }
