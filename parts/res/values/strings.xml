@@ -228,6 +228,7 @@
     <string name="refresh_summary">Set a specific refresh rate for each application</string>
     <string name="refresh_apps_category">Applications</string>
     <string name="refresh_default">Default</string>
+    <string name="refresh_rate_auto">Auto</string>
     <string name="refresh_rate_tile_title">Refresh Rate</string>
     <string name="haptic_level_title">Haptic feedback level</string>
     <string name="haptic_level_summary_incompatible">Feature not supported</string>

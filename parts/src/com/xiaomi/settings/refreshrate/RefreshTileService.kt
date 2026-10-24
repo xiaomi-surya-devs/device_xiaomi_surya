@@ -12,6 +12,7 @@ import android.provider.Settings
 import android.service.quicksettings.Tile
 import android.service.quicksettings.TileService
 import android.view.Display
+import com.xiaomi.settings.R
 import java.util.Locale
 
 class RefreshTileService : TileService() {
@@ -29,21 +30,23 @@ class RefreshTileService : TileService() {
 
     private fun updateTile() {
         val tile = qsTile ?: return
-        val min = Settings.System.getFloat(
-            contentResolver,
-            RefreshUtils.KEY_MIN_REFRESH_RATE,
-            60f
-        )
-        val peak = Settings.System.getFloat(
-            contentResolver,
-            RefreshUtils.KEY_PEAK_REFRESH_RATE,
-            60f
-        )
-        val text = if (min == peak) formatRate(min) else "${formatRate(min)} - ${formatRate(peak)}"
+
+        val utils = RefreshUtils(this)
+        utils.rememberUserRates()
+        val min = utils.getUserMinRate()
+        val peak = utils.getUserPeakRate()
+
+        val text = when {
+            min != null && min == peak -> formatRate(min)
+            min != null && peak != null -> "${formatRate(min)} - ${formatRate(peak)}"
+            peak != null -> formatRate(peak)
+            min != null -> formatRate(min)
+            else -> getString(R.string.refresh_rate_auto)
+        }
 
         tile.contentDescription = text
         tile.subtitle = text
-        tile.state = if (min == peak) Tile.STATE_ACTIVE else Tile.STATE_INACTIVE
+        tile.state = if (min != null && min == peak) Tile.STATE_ACTIVE else Tile.STATE_INACTIVE
         tile.updateTile()
     }
 
@@ -64,21 +67,17 @@ class RefreshTileService : TileService() {
 
         if (rates.isEmpty()) return
 
-        val current = Settings.System.getFloat(
-            contentResolver,
-            RefreshUtils.KEY_PEAK_REFRESH_RATE,
-            rates.first()
-        )
+        val current = RefreshUtils(this).getUserPeakRate() ?: mode.refreshRate
         val next = rates.firstOrNull { it > current } ?: rates.first()
-        Settings.System.putString(
-            contentResolver,
-            RefreshUtils.KEY_MIN_REFRESH_RATE,
-            next.toString()
-        )
+        val value = String.format(Locale.US, "%.02f", next)
+        // Only peak_refresh_rate is written: min_refresh_rate is a hard floor, and touching it
+        // from here would stop a later "Maximum refresh rate" change in Settings > Display from
+        // taking effect. Written directly (not through RefreshUtils) so that the service treats
+        // it as the new user preference instead of one of its own per-app overrides.
         Settings.System.putString(
             contentResolver,
             RefreshUtils.KEY_PEAK_REFRESH_RATE,
-            next.toString()
+            value
         )
     }
 

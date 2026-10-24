@@ -41,6 +41,7 @@ class RefreshService : Service() {
     private val screenReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
             if (intent.action == Intent.ACTION_SCREEN_OFF) {
+                // Re-evaluate the foreground app once the screen is back on.
                 previousPackage = null
             }
         }
@@ -49,8 +50,11 @@ class RefreshService : Service() {
     override fun onCreate() {
         super.onCreate()
         refreshUtils = RefreshUtils(this)
-        refreshUtils.captureDefaultsIfNeeded()
-        refreshUtils.resetToDefault()
+        // Do not touch min/peak_refresh_rate on boot, only remember what the user picked in
+        // Settings > Display. applyRate() restores exactly that value for every app without
+        // an explicit per-app override.
+        refreshUtils.migrateLegacyDefaults()
+        refreshUtils.rememberUserRates()
 
         registerReceiver(
             screenReceiver,
