@@ -364,21 +364,17 @@ PRODUCT_SOONG_NAMESPACES += \
     vendor/qcom/opensource/usb/etc
 
 # System properties
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/sku/build_karna.prop:$(TARGET_COPY_OUT_ODM)/etc/build_karna.prop \
-    $(LOCAL_PATH)/sku/build_surya-INT.prop:$(TARGET_COPY_OUT_ODM)/etc/build_surya-INT.prop \
-    $(LOCAL_PATH)/sku/build_surya-INT.prop:$(TARGET_COPY_OUT_ODM)/etc/build_surya-INT_PA.prop \
-    $(LOCAL_PATH)/sku/build_surya-INT.prop:$(TARGET_COPY_OUT_ODM)/etc/build_surya-INT_PA_DUPLEX.prop \
-    $(LOCAL_PATH)/sku/build_surya-THAI.prop:$(TARGET_COPY_OUT_ODM)/etc/build_surya-THAI.prop \
-    $(LOCAL_PATH)/sku/build_surya-THAI_PA.prop:$(TARGET_COPY_OUT_ODM)/etc/build_surya-THAI_PA.prop
+SKU_PROPS := \
+    karna:karna \
+    surya-INT:surya-INT \
+    surya-INT:surya-INT_PA \
+    surya-INT:surya-INT_PA_DUPLEX \
+    surya-THAI:surya-THAI \
+    surya-THAI_PA:surya-THAI_PA
 
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/sku/build_karna.prop:$(TARGET_COPY_OUT_RECOVERY)/root/build_karna.prop \
-    $(LOCAL_PATH)/sku/build_surya-INT.prop:$(TARGET_COPY_OUT_RECOVERY)/root/build_surya-INT.prop \
-    $(LOCAL_PATH)/sku/build_surya-INT.prop:$(TARGET_COPY_OUT_RECOVERY)/root/build_surya-INT_PA.prop \
-    $(LOCAL_PATH)/sku/build_surya-INT.prop:$(TARGET_COPY_OUT_RECOVERY)/root/build_surya-INT_PA_DUPLEX.prop \
-    $(LOCAL_PATH)/sku/build_surya-THAI.prop:$(TARGET_COPY_OUT_RECOVERY)/root/build_surya-THAI.prop \
-    $(LOCAL_PATH)/sku/build_surya-THAI_PA.prop:$(TARGET_COPY_OUT_RECOVERY)/root/build_surya-THAI_PA.prop
+PRODUCT_COPY_FILES += $(foreach p,$(SKU_PROPS), \
+    $(LOCAL_PATH)/props/sku/build_$(word 1,$(subst :, ,$(p))).prop:$(TARGET_COPY_OUT_ODM)/etc/build_$(word 2,$(subst :, ,$(p))).prop \
+    $(LOCAL_PATH)/props/sku/build_$(word 1,$(subst :, ,$(p))).prop:$(TARGET_COPY_OUT_RECOVERY)/root/build_$(word 2,$(subst :, ,$(p))).prop)
 
 # Telephony
 PRODUCT_PACKAGES += \
