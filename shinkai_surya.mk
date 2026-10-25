@@ -15,6 +15,7 @@ $(call inherit-product, device/xiaomi/surya/device.mk)
 # Inherit some common Shinkai stuff.
 $(call inherit-product, vendor/custom/config/common_full_phone.mk)
 TARGET_SCREEN_WIDTH := 1080
+SHINKAI_MAINTAINER := kylieeXD
 
 PRODUCT_NAME := shinkai_surya
 PRODUCT_DEVICE := surya
